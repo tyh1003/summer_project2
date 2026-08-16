@@ -1,10 +1,38 @@
-
-
 # SimCLR Self-Supervised Learning on CIFAR-10
 
-This project explores **self-supervised representation learning using SimCLR** on CIFAR-10. A modified ResNet-18 is trained without class labels using contrastive learning, and the learned representations are evaluated through kNN monitoring and linear probing.
+> Learning transferable visual representations without class labels using
+> contrastive self-supervised learning.
 
-The experiments also compare SimCLR with supervised learning and a random backbone, investigate the effects of temperature and the projection head, and evaluate transferability to CIFAR-100.
+This project implements **SimCLR from scratch with a modified ResNet-18**
+and investigates how contrastive learning produces useful visual representations.
+
+The learned features are evaluated against **supervised learning** and a
+**random backbone**, followed by ablation studies on temperature and the
+projection head, and finally a cross-dataset transfer experiment on CIFAR-100.
+
+### Key Results
+
+| Experiment | Result |
+|---|---:|
+| SimCLR Linear Probe | **86.77%** |
+| Supervised Baseline | **92.43%** |
+| Random Backbone | **41.83%** |
+| CIFAR-100 Transfer (SimCLR) | **50.05%** |
+| CIFAR-100 Transfer (Supervised) | **49.24%** |
+
+**Key finding:** Although supervised learning achieved higher CIFAR-10 accuracy,
+SimCLR learned representations that transferred competitively to CIFAR-100
+(**50.05% vs. 49.24%**) without using class labels during representation learning.
+
+---
+
+## Method Overview
+
+CIFAR-10 → Augmentation → ResNet-18 → Projection Head → NT-Xent Loss  
+　　　　　　　　　　　 ↓  
+　　　　　　 512-D Representation → kNN / Linear Probe
+
+---
 
 ## Experimental Setup
 
