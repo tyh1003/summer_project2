@@ -50,6 +50,10 @@ The SimCLR model was trained from scratch on CIFAR-10 for **200 epochs** using N
 
 During training, the NT-Xent loss decreased from **5.2717 to 4.4999**, while kNN accuracy gradually increased to **84.96%**. The final linear probing accuracy reached **86.77%**, with a best accuracy of **87.07%**. 
 
+<img width="2400" height="1500" alt="simclr_loss_curve" src="https://github.com/user-attachments/assets/a5389b43-02e7-4a70-8736-94c0b96a5fe1" />
+<img width="2400" height="1500" alt="simclr_knn_accuracy_curve" src="https://github.com/user-attachments/assets/da68e4cc-ca31-45e8-aefa-afd1968a2db1" />
+
+
 ---
 
 ## 2. Supervised Learning
@@ -103,6 +107,17 @@ Although `T = 0.1` produced the lowest final loss (**0.4328**), it did not achie
 
 Therefore, NT-Xent loss values obtained under different temperatures cannot be directly used to compare representation quality. 
 
+<p align="center">
+  <img src="simclr_temp01_knn_curve.png" width="32%">
+  <img src="simclr_knn_accuracy_curve.png" width="32%">
+  <img src="simclr_temp5_knn_curve.png" width="32%">
+</p>
+
+<p align="center">
+  T = 0.1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  T = 0.5 (Baseline) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  T = 5
+</p>
 ---
 
 ## 5. Projector Output
@@ -159,6 +174,9 @@ However, after transferring to CIFAR-100:
 and both are substantially better than the random backbone at **18.57%**. 
 
 This result suggests that the representation learned by SimCLR can transfer effectively to a new dataset and shows good generalization ability. 
+
+<img width="2400" height="1500" alt="cifar100_transfer_comparison" src="https://github.com/user-attachments/assets/e72a1217-f89d-49dc-bce7-0e0c866853db" />
+
 
 ---
 
